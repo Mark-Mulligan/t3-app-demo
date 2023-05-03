@@ -4,6 +4,10 @@ import { SessionProvider } from "next-auth/react";
 
 import { api } from "~/utils/api";
 
+// components
+import Navbar from "~/components/Navbar";
+
+// styles
 import "~/styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -12,6 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <Navbar />
       <Component {...pageProps} />
     </SessionProvider>
   );

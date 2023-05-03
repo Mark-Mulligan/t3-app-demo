@@ -49,7 +49,7 @@ const ListPage = () => {
   }
 
   return (
-    <main className="pt-10">
+    <main className="pt-24">
       <h1 className="mb-8 text-center text-5xl font-bold text-white">
         List Page
       </h1>
