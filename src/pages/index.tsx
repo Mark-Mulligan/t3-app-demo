@@ -29,7 +29,9 @@ const Home = () => {
     },
   });
 
-  const listQuery = api.list.getAll.useQuery();
+  const listQuery = api.list.getAll.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
 
   if (status === "loading") {
     return <p>Loading...</p>;

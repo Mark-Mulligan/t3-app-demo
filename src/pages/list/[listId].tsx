@@ -51,7 +51,7 @@ const ListPage = () => {
   return (
     <main className="pt-24">
       <h1 className="mb-8 text-center text-5xl font-bold text-white">
-        List Page
+        {itemQuery.data?.name}
       </h1>
       <form className="container m-auto max-w-md" onSubmit={handleFormSubmit}>
         <input
@@ -74,7 +74,7 @@ const ListPage = () => {
       </form>
 
       <ul className="container m-auto mt-8 max-w-md">
-        {itemQuery.data?.map((item) => {
+        {itemQuery.data?.items.map((item) => {
           return (
             <li
               key={item.id}

@@ -30,11 +30,18 @@ export const listRouter = createTRPCRouter({
   getItems: protectedProcedure
     .input(z.object({ listId: z.string() }))
     .query(async ({ ctx, input }) => {
+      const { listId } = input;
       const userId = ctx.session.user.id;
-      const items = await ctx.prisma.item.findMany({
-        where: { userId, listId: input.listId },
+      const list = await ctx.prisma.list.findUnique({
+        where: {
+          id: listId,
+        },
+        include: {
+          items: true,
+        },
       });
-      return items;
+
+      return list;
     }),
   addItem: protectedProcedure
     .input(z.object({ name: z.string(), listId: z.string() }))
