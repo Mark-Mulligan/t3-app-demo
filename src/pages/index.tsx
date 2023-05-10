@@ -9,8 +9,11 @@ import Head from "next/head";
 // api
 import { api } from "~/utils/api";
 
+// components
+import LoadingScreen from "~/components/LoadingScreen";
+
 const Home = () => {
-  const { data: session, status } = useSession({
+  const { status } = useSession({
     required: true,
   });
 
@@ -34,7 +37,7 @@ const Home = () => {
   });
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <LoadingScreen loadingText="loading..." />;
   }
 
   const handleFormSubmit = (e: FormEvent) => {
